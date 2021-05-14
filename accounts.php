@@ -34,8 +34,95 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['retype'
         return;
     } else {
 
-        if (isset($_POST['password'])) {
+        if ($_POST['password'] === $_POST['retype']) {
+
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $sql = "INSERT INTO accounts (email, password) VALUES (:email, :password)";
+            $sth = $dbh->prepare($sql);
+            $sth->bindParam(':email', $_POST['email']);
+            $sth->bindParam(':password', $password);
+
+            try {
+                $sth->execute($sql);
+                $_SESSION["success"] = "New account created successfully";
+                header("Location: login.php");
+                return;
+            } catch (PDOException $e) {
+                error_log("Account Creation Failed: " . $e->getMessage());
+                $_SESSION["error"] = "Account creation failed";
+                header("Location: accounts.php");
+                return;
+            }
+        } else {
+            $_SESSION["error"] = "Passwords Do Not Match.";
+            header("Location: accounts.php");
+            return;
         }
     }
 }
+
+$dbh = null;
+
+?>
+
+
+<!DOCTYPE <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Accounts | Recipe thing</title>
+    <meta name="description" content="An account page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="accounts.js" async defer></script>
+</head>
+
+<body>
+    <h1>User Accounts</h1>
+
+    <nav>
+        <a href="index.php"></a>
+        <a href="login.php"></a>
+    </nav>
+
+    <section id="create">
+
+        <hr />
+
+        <h2>Create New Account</h2>
+
+        <?php
+
+        // Flash message
+        if (isset($_SESSION['error'])) {
+            echo ('<p style="color: red">' . htmlentities($_SESSION['error']) . "</p\n");
+            unset($_SESSION['error']);
+        }
+
+        // Flash message
+        if (isset($_SESSION['success'])) {
+            echo ('<p style="color: green">' . htmlentities($_SESSION['success']) . "</p\n");
+            unset($_SESSION['success']);
+        }
+
+        ?>
+
+        <form method="post">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" /><br />
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" /><br />
+            <label for="retype">Re-type Password</label>
+            <input type="password" name="retype" id="retype" /><br />
+            <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+        </form>
+
+        <p id="js_validation_message"></p>
+
+    </section>
+
+</body>
+
+</html>
