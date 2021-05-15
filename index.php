@@ -5,7 +5,7 @@ header('Content-Type: application/xhtml+xml; charset=utf-8');
 session_start();
 
 require_once "pdo.php";
-require_once "pdo.php";
+require_once "util.php";
 
 if (!isset($_SESSION['email'])) {
     $_SESSION["error"] = 'Please login.';
