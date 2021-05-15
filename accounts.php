@@ -66,18 +66,12 @@ $dbh = null;
 ?>
 
 
-<!DOCTYPE <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Accounts | Recipe thing</title>
-    <meta name="description" content="An account page" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="accounts.js" async defer></script>
-</head>
+<?php
+// Add the head
+$file_level = "";
+$title = "Accounts | Recipe thing";
+require_once "head.php";
+?>
 
 <body>
     <h1>User Accounts</h1>
@@ -93,6 +87,7 @@ $dbh = null;
 
         <h2>Create New Account</h2>
 
+        <!-- Flash message -->
         <?php require "flash.php"; ?>
 
         <form method="post">
@@ -109,6 +104,7 @@ $dbh = null;
 
     </section>
 
+    <script src="accounts.js"></script>
 </body>
 
 </html>
