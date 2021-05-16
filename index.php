@@ -10,8 +10,8 @@ if (!isset($_SESSION['email'])) {
     return;
 }
 
-require_once "pdo.php";
-require_once "util.php";
+require_once "includes/pdo.php";
+require_once "includes/util.php";
 
 ?>
 
@@ -19,7 +19,7 @@ require_once "util.php";
 // Add the head
 $file_level = "";
 $title = "Home | Recipe thing";
-require_once "head.php";
+require_once "includes/head.php";
 ?>
 
 <body>
@@ -28,7 +28,7 @@ require_once "head.php";
 
     <?php
 
-    require "flash.php";
+    require_once "includes/flash.php";
 
     $sql = 'SELECT pet_id, image, type, dob FROM pets WHERE user_id = "' . $_SESSION['user_id'] . '"';
     $sth = $dbh->prepare($sql);

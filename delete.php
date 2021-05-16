@@ -6,8 +6,8 @@ session_start();
 
 if (!isset($_SESSION['email'])) {
 
-    require_once "pdo.php";
-    require_once "util.php";
+    require_once "includes/pdo.php";
+    require_once "includes/util.php";
 
     if (isset($_SESSION['delete']) && isset($_POST['pet_id'])) {
 
@@ -75,15 +75,14 @@ if (!isset($_SESSION['email'])) {
 // Add the head
 $file_level = "";
 $title = "Delete | Recipe thing";
-require_once "head.php";
+require_once "includes/head.php";
 ?>
 
 <body>
 
     <h1>Delete Pet</h1>
 
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>"
-        alt="<?php echo $type . ' ' . $breed; ?>" width="100" />
+    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>" alt="<?php echo $type . ' ' . $breed; ?>" width="100" />
     <p>Type: <?php echo $type ?></p>
     <p>Breed: <?php echo $breed ?></p>
     <p>Date of Birth: <?php echo $dob ?></p>

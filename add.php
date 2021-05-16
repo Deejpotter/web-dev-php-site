@@ -10,7 +10,7 @@ if (!isset($_SESSION['email'])) {
     return;
 }
 
-require_once "pdo.php";
+require_once "includes/pdo.php";
 
 if (isset($_POST['add'])) {
 
@@ -69,7 +69,7 @@ if (isset($_POST['add'])) {
 // Add the head
 $file_level = "";
 $title = "Add | Recipe thing";
-require_once "head.php";
+require_once "includes/head.php";
 ?>
 
 <body>

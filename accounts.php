@@ -4,7 +4,7 @@ header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
-require_once "pdo.php";
+require_once "includes/pdo.php";
 
 // Return true if email is valid
 function checkemail($email)
@@ -70,7 +70,7 @@ $dbh = null;
 // Add the head
 $file_level = "";
 $title = "Accounts | Recipe thing";
-require_once "head.php";
+require_once "includes/head.php";
 ?>
 
 <body>
@@ -90,7 +90,7 @@ require_once "head.php";
 
         <?php
         // Flash message
-        require "flash.php";
+        require_once "includes/flash.php";
         ?>
 
         <form method="post">

@@ -10,8 +10,8 @@ if (!isset($_SESSION['email'])) {
     return;
 }
 
-require_once "pdo.php";
-require_once "util.php";
+require_once "includes/pdo.php";
+require_once "includes/util.php";
 
 if (isset($_SESSION['email'])) {
 
@@ -116,15 +116,14 @@ if (isset($_POST['edit'])) {
 // Add the head
 $file_level = "";
 $title = "Edit | Recipe thing";
-require_once "head.php";
+require_once "includes/head.php";
 ?>
 
 <body>
 
     <h1>Edit Pet</h1>
 
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>"
-        alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
+    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>" alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
 
     <form method="post" enctype="multipart/form-data">
         <label for="image">Image</label>
