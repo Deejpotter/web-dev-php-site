@@ -69,8 +69,11 @@ require_once "head.php";
 
         <h2>Login</h2>
 
-        <!-- Flash message -->
-        <?php require "flash.php"; ?>
+
+        <?php
+        // Flash message
+        require "flash.php";
+        ?>
 
         <form method="post">
             <label for="email">Email</label>
@@ -81,6 +84,8 @@ require_once "head.php";
         </form>
 
         <p id="js_validation_message"></p>
+
+        <script src="login.js"></script>
 
     </section>
 

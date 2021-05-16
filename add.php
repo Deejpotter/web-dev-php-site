@@ -71,3 +71,28 @@ $file_level = "";
 $title = "Add | Recipe thing";
 require_once "head.php";
 ?>
+
+<body>
+
+    <h1>Add recipe</h1>
+
+    <form method="post">
+        <label for="image">Image</label>
+        <input type="file" name="image" id="image" /><br />
+        <label for="type">Type</label>
+        <input type="text" name="type" id="type" /><br />
+        <label for="breed">Breed</label>
+        <input type="text" name="breed" id="breed" /><br />
+        <label for="dob">Date of Birth</label>
+        <input type="text" name="dob" id="dob" /><br />
+        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+        <input type="submit" name="cancel" value="Cancel" />
+    </form>
+
+    <p id="js_validation_message"></p>
+
+    <script src="add.js"></script>
+
+</body>
+
+</html>

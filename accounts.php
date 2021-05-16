@@ -74,6 +74,7 @@ require_once "head.php";
 ?>
 
 <body>
+
     <h1>User Accounts</h1>
 
     <nav>
@@ -87,8 +88,10 @@ require_once "head.php";
 
         <h2>Create New Account</h2>
 
-        <!-- Flash message -->
-        <?php require "flash.php"; ?>
+        <?php
+        // Flash message
+        require "flash.php";
+        ?>
 
         <form method="post">
             <label for="email">Email</label>
