@@ -130,12 +130,12 @@ require_once "includes/head.php";
         <label for="image">Image</label>
         <input type="file" name="image" id="image" /><br />
         <label for="type">Type</label>
-        <input type="text" name="type" id="type" /><br />
+        <input type="text" name="type" id="type" value="<?php echo $type; ?>" /><br />
         <label for="breed">Breed</label>
-        <input type="text" name="breed" id="breed" /><br />
+        <input type="text" name="breed" id="breed" value="<?php echo $breed; ?>" /><br />
         <label for="dob">Date of Birth</label>
-        <input type="text" name="dob" id="dob" /><br />
-        <input type="submit" onclick="return validatePet();" name="submit" value="Submit" />
+        <input type="text" name="dob" id="dob" value="<?php echo $dob; ?>" /><br />
+        <input type="submit" onclick="return validatePet();" name="edit" value="Edit Pet" />
         <input type="submit" name="cancel" value="Cancel" />
     </form>
 

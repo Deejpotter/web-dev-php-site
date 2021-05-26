@@ -4,12 +4,12 @@ header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
-if (!isset($_SESSION['email'])) {
+if (isset($_SESSION['email'])) {
 
     require_once "includes/pdo.php";
     require_once "includes/util.php";
 
-    if (isset($_SESSION['delete']) && isset($_POST['pet_id'])) {
+    if (isset($_POST['delete']) && isset($_POST['pet_id'])) {
 
         try {
 
@@ -82,15 +82,16 @@ require_once "includes/head.php";
 
     <h1>Delete Pet</h1>
 
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>" alt="<?php echo $type . ' ' . $breed; ?>" width="100" />
+    <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>"
+        alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
     <p>Type: <?php echo $type ?></p>
     <p>Breed: <?php echo $breed ?></p>
     <p>Date of Birth: <?php echo $dob ?></p>
 
     <form method="post">
         <input type="hidden" name="pet_id" value="<?php echo $pet_id; ?>" />
-        <input type="submit" name="delete" value="Delete">
-        <input type="submit" name="cancel" value="Cancel">
+        <input type="submit" name="delete" value="Delete" />
+        <input type="submit" name="cancel" value="Cancel" />
     </form>
 
 </body>
