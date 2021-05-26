@@ -6,5 +6,5 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title><?php echo $file_level . $title ?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="<?php echo $file_level ?>css/styles.css" />
 </head>

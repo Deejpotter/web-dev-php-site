@@ -50,7 +50,7 @@ $dbh = null;
 <?php
 // Add the head
 $file_level = "";
-$title = "Accounts | Recipe thing";
+$title = "Login | Recipe thing";
 require_once "includes/head.php";
 ?>
 
@@ -59,8 +59,8 @@ require_once "includes/head.php";
     <h1>Login</h1>
 
     <nav>
-        <a href="index.php">Index</a>
-        <a href="accounts.php">Accounts</a>
+        <a href="<?php echo $file_level ?>index.php">Index</a>
+        <a href="<?php echo $file_level ?>accounts.php">Accounts</a>
     </nav>
 
     <section id="login">
@@ -85,7 +85,7 @@ require_once "includes/head.php";
 
         <p id="js_validation_message"></p>
 
-        <script src="login.js"></script>
+        <script src="<?php echo $file_level ?>js/validate.js"></script>
 
     </section>
 

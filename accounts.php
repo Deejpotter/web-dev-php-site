@@ -36,14 +36,14 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['retype'
 
         if ($_POST['password'] === $_POST['retype']) {
 
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $sql = "INSERT INTO accounts (email, password) VALUES (:email, :password)";
-            $sth = $dbh->prepare($sql);
-            $sth->bindParam(':email', $_POST['email']);
-            $sth->bindParam(':password', $password);
-
             try {
-                $sth->execute($sql);
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $sql = "INSERT INTO accounts (email, password) VALUES (:email, :password)";
+                $sth = $dbh->prepare($sql);
+                $sth->bindParam(":email", $_POST['email']);
+                $sth->bindParam(":password", $password);
+
+                $sth->execute();
                 $_SESSION["success"] = "New account created successfully";
                 header("Location: login.php");
                 return;
@@ -107,7 +107,7 @@ require_once "includes/head.php";
 
     </section>
 
-    <script src="accounts.js"></script>
+    <script src="js/validate.js"></script>
 </body>
 
 </html>

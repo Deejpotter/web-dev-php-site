@@ -123,7 +123,8 @@ require_once "includes/head.php";
 
     <h1>Edit Pet</h1>
 
-    <img src="data:image/jpeg;base64,<?php echo base64_encode($row[" image"]) ?>" alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
+    <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>"
+        alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
 
     <form method="post" enctype="multipart/form-data">
         <label for="image">Image</label>
@@ -134,13 +135,13 @@ require_once "includes/head.php";
         <input type="text" name="breed" id="breed" /><br />
         <label for="dob">Date of Birth</label>
         <input type="text" name="dob" id="dob" /><br />
-        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+        <input type="submit" onclick="return validatePet();" name="submit" value="Submit" />
         <input type="submit" name="cancel" value="Cancel" />
     </form>
 
     <p id="js_validation_message"></p>
 
-    <script src="edit.js"></script>
+    <script src="js/validate.js"></script>
 
 </body>
 

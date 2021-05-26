@@ -76,7 +76,7 @@ require_once "includes/head.php";
 
     <h1>Add recipe</h1>
 
-    <form method="post">
+    <form enctype="multipart/form-data" method="post">
         <label for="image">Image</label>
         <input type="file" name="image" id="image" /><br />
         <label for="type">Type</label>
@@ -85,13 +85,13 @@ require_once "includes/head.php";
         <input type="text" name="breed" id="breed" /><br />
         <label for="dob">Date of Birth</label>
         <input type="text" name="dob" id="dob" /><br />
-        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+        <input type="submit" onclick="return validatePet();" name="add" value="Submit" />
         <input type="submit" name="cancel" value="Cancel" />
     </form>
 
     <p id="js_validation_message"></p>
 
-    <script src="add.js"></script>
+    <script src="js/validate.js"></script>
 
 </body>
 

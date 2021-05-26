@@ -30,7 +30,7 @@ require_once "includes/head.php";
 
     require_once "includes/flash.php";
 
-    $sql = 'SELECT pet_id, image, type, dob FROM pets WHERE user_id = "' . $_SESSION['user_id'] . '"';
+    $sql = 'SELECT pet_id, image, type, breed, dob FROM pets WHERE user_id = "' . $_SESSION['user_id'] . '"';
     $sth = $dbh->prepare($sql);
 
     if (!empty($sth->execute())) {
