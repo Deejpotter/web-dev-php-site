@@ -1,0 +1,454 @@
+/* --------------- Imports ------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Oxygen:wght@300;400;700&display=swap');
+
+
+/* --------------- Variables ------------------- */
+
+:root {
+    --main: #FF4B3E;
+    --accent-green: #8FC93A;
+    --accent-blue: #0496FF;
+    --light: #F3F5F6;
+    --dark: #1B1F22;
+    --dark-trans: #1b1f2e99;
+
+    --heading-font: 'Knewave', cursive;
+    --body-font: 'Oxygen', sans-serif;
+
+    --breakpoint-1: 650px;
+    --breakpoint-2: 1200px;
+    --card-size: 250px;
+    --header-height: 10vh;
+    --border-radius: 8px;
+}
+
+
+/* --------------- Base ------------------- */
+
+body {
+    font-family: var(--body-font);
+    background-color: var(--main);
+    color: var(--dark);
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    min-height: 80vh;
+}
+
+section {
+    margin-bottom: 1em;
+    min-height: 10em;
+    padding: 0 1em;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--heading-font);
+    font-weight: 400;
+    margin-bottom: .1em;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+a {
+    color: var(--light);
+    font-family: var(--heading-font);
+    text-decoration: none;
+}
+
+p {
+    margin: .1em 0;
+}
+
+
+/* --------------- Main classes ------------------- */
+
+.container {
+    display: flex;
+    padding: 0 1em;
+    min-height: 5em;
+    max-width: var(--breakpoint-2);
+    margin: 0 auto;
+}
+
+
+.container-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    max-width: var(--breakpoint-2);
+    margin: 0 auto;
+}
+
+@media (min-width: 700px) {
+    .container-center {
+        max-width: var(--breakpoint-1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.container-col {
+    display: flex;
+    flex-direction: column;
+    max-width: var(--breakpoint-2);
+    margin: 0 auto;
+    padding: 0 1em;
+}
+
+.container-sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1em;
+    min-height: 5em;
+    max-width: var(--breakpoint-2);
+    margin: 0 auto;
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    background: var(--accent-blue);
+    color: var(--dark);
+    width: fit-content;
+    height: 2em;
+    padding: 0.5em;
+    margin: .5em 0;
+    border-radius: var(--border-radius);
+    align-self: center;
+}
+
+.shadow {
+    box-shadow: var(--dark-trans) 4px 4px 12px;
+    transition: all .3s;
+}
+
+.shadow:hover {
+    box-shadow: var(--dark-trans) 16px 16px 24px;
+}
+
+.border-radius {
+    border-radius: var(--border-radius);
+}
+
+
+/* --------------- Hero ------------------- */
+
+.hero {
+    height: 30vh;
+    overflow: hidden;
+    padding: 0;
+}
+
+.hero img {
+    width: 100%;
+    height: 100%;
+}
+
+.hero h1 {
+    transform: translateY(-30vh);
+}
+
+.hero h2 {
+    transform: translateY(-30vh);
+}
+
+@media (min-width: 650px) {
+    .hero {
+        height: 40vh;
+    }
+
+    .hero h1 {
+        font-size: 5em;
+        transform: translateY(-40vh);
+    }
+
+    .hero h2 {
+        font-size: 2em;
+        transform: translateY(-40vh);
+    }
+}
+
+
+/* --------------- Navbar ------------------- */
+
+.navbar {
+    background: var(--dark);
+    color: var(--light);
+    padding: 1em 0;
+}
+
+.brand {
+    font-size: 2rem;
+    font-family: var(--heading-font);
+    color: var(--light);
+}
+
+.navbar .container {
+    flex-direction: column;
+    align-items: center;
+    transition: all 1s;
+}
+
+.navbar label {
+    color: var(--main);
+    font-family: var(--heading-font);
+    font-size: 1em;
+    border: solid .1em var(--main);
+    border-radius: var(--border-radius);
+}
+
+@media (min-width: 700px) {
+    .navbar .container {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.navbar ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    transition: all 1s;
+}
+
+@media (min-width: 700px) {
+    .navbar ul {
+        display: flex;
+    }
+}
+
+.navbar li {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 700px) {
+    .navbar li {
+        padding: 0 1em;
+    }
+}
+
+.navbar a {
+    background-color: var(--dark);
+    font-size: 1.4em;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+input[type=checkbox]:checked~#menu {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 700px) {
+    .navbar label {
+        display: none;
+    }
+}
+
+@media (min-width: 700px) {
+    .navbar ul li ul {
+        display: none;
+        transition: all 1s;
+    }
+
+    .navbar ul:hover li ul {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 4.5em;
+    }
+
+    .navbar ul:hover li ul li {
+        padding: 0;
+    }
+
+    .navbar ul:hover li ul li a {
+        padding: 1em;
+    }
+}
+
+
+/* --------------- About section ------------------- */
+
+.about-section .container-col {
+    margin: 2em 1em 0;
+    background-color: var(--light);
+}
+
+@media (min-width: 700px) {
+    .link-button {
+        width: max-content;
+        padding: 1em;
+    }
+
+    .about-section .about-text {
+        max-width: 600px;
+    }
+
+    .about-section .container-col {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+        margin: 1em auto;
+        padding: 1em;
+    }
+}
+
+
+/* --------------- Flex grid ------------------- */
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1em;
+    min-height: 5em;
+}
+
+@media (min-width: 700px) {
+    .grid {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1em;
+    margin: 1em;
+    width: 90%;
+    max-width: var(--card-size);
+    height: 90vw;
+    max-height: var(--card-size);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: ridge .5em var(--dark);
+}
+
+@media (min-width: 700px) {
+    .card {
+        width: var(--card-size);
+        height: var(--card-size);
+    }
+
+    .card:hover {
+        transform: scale(1.1);
+    }
+}
+
+.card img {
+    height: 100%;
+}
+
+.card h3 {
+    font-size: 1.6em;
+    transform: translateY(-200px);
+}
+
+.card a {
+    font-size: 1.5em;
+    color: var(--dark);
+    transform: translateY(-200px);
+    text-decoration: underline dotted .1em;
+}
+
+/* --------------- Footer ------------------- */
+
+footer {
+    background-color: var(--light);
+    box-shadow: var(--dark-trans) -4px 0 12px;
+}
+
+footer .container {
+    align-items: center;
+    justify-content: space-around;
+}
+
+@media (min-width: 650px) {
+    footer a {
+        font-size: 2em;
+    }
+}
+
+
+/* --------------- Recipe page ------------------- */
+
+.container-sidebar {
+    margin: 2em 1em;
+    background-color: var(--light);
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    .container-sidebar {
+        flex-direction: row;
+        max-width: var(--breakpoint-2);
+        margin: 1em auto;
+        padding: 1em;
+    }
+
+    .recipe {
+        width: 60%;
+    }
+
+    .sidebar {
+        width: 30%;
+    }
+}
+
+.method li {
+    padding-bottom: 1em;
+}
+
+
+/* --------------- Image classes ------------------- */
+
+.img-spoon-square {
+    background-image: url(../images/spoons-square.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-tablecloth-blank {
+    background-image: url(../images/blank-tablecloth.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-knife-blank {
+    background-image: url(../images/blank-knife.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.img-spoon-blank {
+    background-image: url(../images/blank-spoon.jpg);
+    background-size: cover;
+    background-position: center;
+}

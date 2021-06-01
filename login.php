@@ -1,14 +1,16 @@
 <?php
 
+$file_level = "";
+
 header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
-require_once "includes/pdo.php";
+require_once $file_level . "includes/pdo.php";
 
 if (isset($_SESSION['email'])) {
     $_SESSION["error"] = 'Please logout first.';
-    header("Location: index.php");
+    header("Location: " . $file_level . "index.php");
     return;
 }
 
@@ -28,17 +30,17 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             $_SESSION['email'] = $_POST['email'];
             $_SESSION['user_id'] = $result['user_id'];
             $_SESSION['success'] = "You are now logged in!";
-            header("Location: index.php");
+            header("Location: " . $file_level . "index.php");
             return;
         } else {
 
             $_SESSION['error'] = 'Invalid password.';
-            header("Location: login.php");
+            header("Location: " . $file_level . "login.php");
             return;
         }
     } else {
         $_SESSION['error'] = "Email Not Found.";
-        header("Location: login.php");
+        header("Location: " . $file_level . "login.php");
         return;
     }
 }
@@ -49,30 +51,18 @@ $dbh = null;
 
 <?php
 // Add the head
-$file_level = "";
 $title = "Login | Recipe thing";
-require_once "includes/head.php";
+require_once $file_level . "includes/head.php";
 ?>
 
-<body>
+<main>
+    <section class="container-center" id="login">
 
-    <h1>Login</h1>
-
-    <nav>
-        <a href="<?php echo $file_level ?>index.php">Index</a>
-        <a href="<?php echo $file_level ?>accounts.php">Accounts</a>
-    </nav>
-
-    <section id="login">
-
-        <hr />
-
-        <h2>Login</h2>
-
+        <h1>Login</h1>
 
         <?php
         // Flash message
-        require_once "includes/flash.php";
+        require_once $file_level . "includes/flash.php";
         ?>
 
         <form method="post">
@@ -88,7 +78,9 @@ require_once "includes/head.php";
         <script src="<?php echo $file_level ?>js/validate.js"></script>
 
     </section>
+</main>
 
-</body>
-
-</html>
+<?php
+// Add the footer
+require_once $file_level . "includes/footer.php";
+?>

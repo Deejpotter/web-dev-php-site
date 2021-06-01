@@ -1,16 +1,18 @@
 <?php
 
+$file_level = "../";
+
 header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
 if (!isset($_SESSION['email'])) {
     $_SESSION["error"] = 'Please login.';
-    header("Location: login.php");
+    header("Location: " . $file_level . "recipes/login.php");
     return;
 }
 
-require_once "includes/pdo.php";
+require_once $file_level . "includes/pdo.php";
 
 if (isset($_POST['add'])) {
 
@@ -24,7 +26,7 @@ if (isset($_POST['add'])) {
 
             if (!in_array($detectedType, $allowableTypes)) {
                 $_SESSION['error'] = 'Not a valid image type';
-                header("Location: index.php");
+                header("Location: " . $file_level . "index.php");
                 return;
             }
 
@@ -48,18 +50,18 @@ if (isset($_POST['add'])) {
             );
 
             $_SESSION['success'] = 'Pet added!';
-            header("Location: index.php");
+            header("Location: " . $file_level . "index.php");
             return;
         } catch (PDOException $e) {
 
             error_log("Pet Creation Failed: " . $e->getMessage());
             $_SESSION['error'] = 'The pet could not be added';
-            header("Location: index.php");
+            header("Location: " . $file_level . "index.php");
             return;
         }
     }
 } elseif (isset($_POST['cancel'])) {
-    header('Location: index.php');
+    header('Location: ' . $file_level . 'index.php');
     return;
 }
 
@@ -67,32 +69,31 @@ if (isset($_POST['add'])) {
 
 <?php
 // Add the head
-$file_level = "";
 $title = "Add | Recipe thing";
-require_once "includes/head.php";
+require_once $file_level . "includes/head.php";
 ?>
 
-<body>
 
-    <h1>Add recipe</h1>
+<h1>Add recipe</h1>
 
-    <form enctype="multipart/form-data" method="post">
-        <label for="image">Image</label>
-        <input type="file" name="image" id="image" /><br />
-        <label for="type">Type</label>
-        <input type="text" name="type" id="type" /><br />
-        <label for="breed">Breed</label>
-        <input type="text" name="breed" id="breed" /><br />
-        <label for="dob">Date of Birth</label>
-        <input type="text" name="dob" id="dob" /><br />
-        <input type="submit" onclick="return validatePet();" name="add" value="Submit" />
-        <input type="submit" name="cancel" value="Cancel" />
-    </form>
+<form enctype="multipart/form-data" method="post">
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image" /><br />
+    <label for="type">Type</label>
+    <input type="text" name="type" id="type" /><br />
+    <label for="breed">Breed</label>
+    <input type="text" name="breed" id="breed" /><br />
+    <label for="dob">Date of Birth</label>
+    <input type="text" name="dob" id="dob" /><br />
+    <input type="submit" onclick="return validatePet();" name="add" value="Submit" />
+    <input type="submit" name="cancel" value="Cancel" />
+</form>
 
-    <p id="js_validation_message"></p>
+<p id="js_validation_message"></p>
 
-    <script src="js/validate.js"></script>
+<script src="js/validate.js"></script>
 
-</body>
-
-</html>
+<?php
+// Add the footer
+require_once $file_level . "includes/footer.php";
+?>

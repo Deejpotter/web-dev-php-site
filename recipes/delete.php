@@ -1,13 +1,15 @@
 <?php
 
+$file_level = "../";
+
 header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
 if (isset($_SESSION['email'])) {
 
-    require_once "includes/pdo.php";
-    require_once "includes/util.php";
+    require_once $file_level . "includes/pdo.php";
+    require_once $file_level . "includes/util.php";
 
     if (isset($_POST['delete']) && isset($_POST['pet_id'])) {
 
@@ -18,17 +20,17 @@ if (isset($_SESSION['email'])) {
             $sth->execute(array(':pet_id' => $_POST['pet_id']));
 
             $_SESSION['success'] = 'Pet deleted';
-            header('Location: index.php');
+            header('Location: ' . $file_level . 'index.php');
             return;
         } catch (PDOException $e) {
 
             error_log("Invalid pet profile: ");
             $_SESSION['error'] = "Delete pet failure"  . $e->getMessage();
-            header("Location: edit.php");
+            header("Location: " . $file_level . "recipes/edit.php");
             return;
         }
     } elseif (isset($_POST['cancel'])) {
-        header('Location: index.php');
+        header('Location: ' . $file_level . 'index.php');
         return;
     }
 
@@ -36,7 +38,7 @@ if (isset($_SESSION['email'])) {
     if (!isset($_GET['pet_id'])) {
 
         $_SESSION['error'] = 'Pet Missing';
-        header('Location: index.php');
+        header('Location: ' . $file_level . 'index.php');
         return;
     }
 
@@ -51,7 +53,7 @@ if (isset($_SESSION['email'])) {
 
             if ($row === false) {
                 $_SESSION['error'] = 'Bad value for pet_id';
-                header('Location: index.php');
+                header('Location: ' . $file_level . 'index.php');
                 return;
             }
 
@@ -64,7 +66,7 @@ if (isset($_SESSION['email'])) {
 
         error_log("Invalid pet profile: ");
         $_SESSION['error'] = "Delete pet failure"  . $e->getMessage();
-        header("Location: edit.php");
+        header("Location: " . $file_level . "recipes/edit.php");
         return;
     }
 }
@@ -73,27 +75,26 @@ if (isset($_SESSION['email'])) {
 
 <?php
 // Add the head
-$file_level = "";
 $title = "Delete | Recipe thing";
-require_once "includes/head.php";
+require_once $file_level . "includes/head.php";
 ?>
 
-<body>
 
-    <h1>Delete Pet</h1>
+<h1>Delete Pet</h1>
 
-    <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>"
-        alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
-    <p>Type: <?php echo $type ?></p>
-    <p>Breed: <?php echo $breed ?></p>
-    <p>Date of Birth: <?php echo $dob ?></p>
+<img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $type . ' ' . $breed; ?>"
+    width="100" /><br />
+<p>Type: <?php echo $type ?></p>
+<p>Breed: <?php echo $breed ?></p>
+<p>Date of Birth: <?php echo $dob ?></p>
 
-    <form method="post">
-        <input type="hidden" name="pet_id" value="<?php echo $pet_id; ?>" />
-        <input type="submit" name="delete" value="Delete" />
-        <input type="submit" name="cancel" value="Cancel" />
-    </form>
+<form method="post">
+    <input type="hidden" name="pet_id" value="<?php echo $pet_id; ?>" />
+    <input type="submit" name="delete" value="Delete" />
+    <input type="submit" name="cancel" value="Cancel" />
+</form>
 
-</body>
-
-</html>
+<?php
+// Add the footer
+require_once $file_level . "includes/footer.php";
+?>

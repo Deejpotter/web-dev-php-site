@@ -1,10 +1,12 @@
 <?php
 
+$file_level = "";
+
 header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
-require_once "includes/pdo.php";
+require_once $file_level . "includes/pdo.php";
 
 // Return true if email is valid
 function checkemail($email)
@@ -26,11 +28,11 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['retype'
 
     if ($checkemail === false) {
         $_SESSION["error"] = "Invalid email.";
-        header("Location: accounts.php");
+        header("Location: " . $file_level . "accounts.php");
         return;
     } else if (strlen($_POST['password']) < 5) {
         $_SESSION["error"] = "Invalid password. Password must be at least 5 characters";
-        header("Location: accounts.php");
+        header("Location: " . $file_level . "accounts.php");
         return;
     } else {
 
@@ -45,17 +47,17 @@ if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['retype'
 
                 $sth->execute();
                 $_SESSION["success"] = "New account created successfully";
-                header("Location: login.php");
+                header("Location: " . $file_level . "login.php");
                 return;
             } catch (PDOException $e) {
                 error_log("Account Creation Failed: " . $e->getMessage());
                 $_SESSION["error"] = "Account creation failed";
-                header("Location: accounts.php");
+                header("Location: " . $file_level . "accounts.php");
                 return;
             }
         } else {
             $_SESSION["error"] = "Passwords Do Not Match.";
-            header("Location: accounts.php");
+            header("Location: " . $file_level . "accounts.php");
             return;
         }
     }
@@ -70,44 +72,44 @@ $dbh = null;
 // Add the head
 $file_level = "";
 $title = "Accounts | Recipe thing";
-require_once "includes/head.php";
+require_once $file_level . "includes/head.php";
 ?>
 
-<body>
 
-    <h1>User Accounts</h1>
+<h1>User Accounts</h1>
 
-    <nav>
-        <a href="index.php"></a>
-        <a href="login.php"></a>
-    </nav>
+<nav>
+    <a href="index.php"></a>
+    <a href="login.php"></a>
+</nav>
 
-    <section id="create">
+<section id="create">
 
-        <hr />
+    <hr />
 
-        <h2>Create New Account</h2>
+    <h2>Create New Account</h2>
 
-        <?php
-        // Flash message
-        require_once "includes/flash.php";
-        ?>
+    <?php
+    // Flash message
+    require_once $file_level . "includes/flash.php";
+    ?>
 
-        <form method="post">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" /><br />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" /><br />
-            <label for="retype">Re-type Password</label>
-            <input type="password" name="retype" id="retype" /><br />
-            <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
-        </form>
+    <form method="post">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" /><br />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" /><br />
+        <label for="retype">Re-type Password</label>
+        <input type="password" name="retype" id="retype" /><br />
+        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+    </form>
 
-        <p id="js_validation_message"></p>
+    <p id="js_validation_message"></p>
 
-    </section>
+</section>
 
-    <script src="js/validate.js"></script>
-</body>
-
-</html>
+<script src="js/validate.js"></script>
+<?php
+// Add the footer
+require_once $file_level . "includes/footer.php";
+?>

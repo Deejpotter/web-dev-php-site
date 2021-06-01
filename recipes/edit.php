@@ -1,17 +1,19 @@
 <?php
 
+$file_level = "../";
+
 header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
 if (!isset($_SESSION['email'])) {
     $_SESSION["error"] = 'Please login.';
-    header("Location: login.php");
+    header("Location: " . $file_level . "login.php");
     return;
 }
 
-require_once "includes/pdo.php";
-require_once "includes/util.php";
+require_once $file_level . "includes/pdo.php";
+require_once $file_level . "includes/util.php";
 
 if (isset($_SESSION['email'])) {
 
@@ -49,7 +51,7 @@ if (isset($_POST['edit'])) {
 
             if (!in_array($detectedType, $allowableTypes)) {
                 $_SESSION['error'] = "Not a valid image type";
-                header("Location: index.php");
+                header("Location: " . $file_level . "index.php");
                 return;
             }
 
@@ -67,13 +69,13 @@ if (isset($_POST['edit'])) {
                 );
 
                 $_SESSION['success'] = 'Pet updated!';
-                header('Location: index.php');
+                header('Location: ' . $file_level . 'index.php');
                 return;
             } catch (PDOException $e) {
 
                 error_log('Pet Update Failed: ' . $e->getMessage());
                 $_SESSION['error'] = 'The pet could not be updated';
-                header('Location: index.php');
+                header('Location: ' . $file_level . 'index.php');
                 return;
             }
         } else {
@@ -92,20 +94,20 @@ if (isset($_POST['edit'])) {
                 );
 
                 $_SESSION['success'] = 'Pet updated!';
-                header('Location: index.php');
+                header('Location: ' . $file_level . 'index.php');
                 return;
             } catch (PDOException $e) {
 
                 error_log('Pet Update Failed: ' . $e->getMessage());
                 $_SESSION['error'] = 'The pet could not be updated';
-                header('Location: index.php');
+                header('Location: ' . $file_level . 'index.php');
                 return;
             }
         }
     }
 } elseif (isset($_POST['cancel'])) {
 
-    header('Location: index.php');
+    header('Location: ' . $file_level . 'index.php');
     return;
 }
 
@@ -114,35 +116,34 @@ if (isset($_POST['edit'])) {
 
 <?php
 // Add the head
-$file_level = "";
 $title = "Edit | Recipe thing";
-require_once "includes/head.php";
+require_once $file_level . "includes/head.php";
 ?>
 
-<body>
 
-    <h1>Edit Pet</h1>
+<h1>Edit Pet</h1>
 
-    <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>"
-        alt="<?php echo $type . ' ' . $breed; ?>" width="100" /><br />
+<img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $type . ' ' . $breed; ?>"
+    width="100" /><br />
 
-    <form method="post" enctype="multipart/form-data">
-        <label for="image">Image</label>
-        <input type="file" name="image" id="image" /><br />
-        <label for="type">Type</label>
-        <input type="text" name="type" id="type" value="<?php echo $type; ?>" /><br />
-        <label for="breed">Breed</label>
-        <input type="text" name="breed" id="breed" value="<?php echo $breed; ?>" /><br />
-        <label for="dob">Date of Birth</label>
-        <input type="text" name="dob" id="dob" value="<?php echo $dob; ?>" /><br />
-        <input type="submit" onclick="return validatePet();" name="edit" value="Edit Pet" />
-        <input type="submit" name="cancel" value="Cancel" />
-    </form>
+<form method="post" enctype="multipart/form-data">
+    <label for="image">Image</label>
+    <input type="file" name="image" id="image" /><br />
+    <label for="type">Type</label>
+    <input type="text" name="type" id="type" value="<?php echo $type; ?>" /><br />
+    <label for="breed">Breed</label>
+    <input type="text" name="breed" id="breed" value="<?php echo $breed; ?>" /><br />
+    <label for="dob">Date of Birth</label>
+    <input type="text" name="dob" id="dob" value="<?php echo $dob; ?>" /><br />
+    <input type="submit" onclick="return validatePet();" name="edit" value="Edit Pet" />
+    <input type="submit" name="cancel" value="Cancel" />
+</form>
 
-    <p id="js_validation_message"></p>
+<p id="js_validation_message"></p>
 
-    <script src="js/validate.js"></script>
+<script src="js/validate.js"></script>
 
-</body>
-
-</html>
+<?php
+// Add the footer
+require_once $file_level . "includes/footer.php";
+?>
