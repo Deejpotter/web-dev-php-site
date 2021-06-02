@@ -1,7 +1,7 @@
 <?php
 
 // Data source name
-$dsn = "mysql:host=localhost; dbname=school_test; charset=utf8";
+$dsn = "mysql:host=localhost; dbname=recipe_site; charset=utf8";
 $username = "root";
 $password = "";
 

@@ -8,7 +8,7 @@ session_start();
 
 if (!isset($_SESSION['email'])) {
     $_SESSION["error"] = 'Please login.';
-    header("Location: " . $file_level . "recipes/login.php");
+    header("Location: " . $file_level . "login.php");
     return;
 }
 
@@ -16,7 +16,7 @@ require_once $file_level . "includes/pdo.php";
 
 if (isset($_POST['add'])) {
 
-    if (($_POST["image"] !== "") && ($_POST["type"] !== "") && ($_POST["breed"] !== "") && ($_POST["dob"] !== "")) {
+    if (($_POST["image"] !== "") && ($_POST["name"] !== "") && ($_POST["alt"] !== "") && ($_POST["subtitle"] !== "")) {
 
         try {
 
@@ -30,38 +30,40 @@ if (isset($_POST['add'])) {
                 return;
             }
 
-            $sql = 'SELECT user_id FROM accounts WHERE email = "' . $_SESSION['email'] . '"';
+            $sql = 'SELECT account_id FROM accounts WHERE email = "' . $_SESSION['email'] . '"';
             $sth = $dbh->prepare($sql);
             $sth->execute();
 
             $row = $sth->fetch(PDO::FETCH_ASSOC);
-            $user_id = $row["user_id"];
+            $account_id = $row["account_id"];
 
-            $sql = 'INSERT INTO pets (user_id, image, type, breed, dob) VALUES (:user_id, :image, :type, :breed, :dob)';
+            $sql = 'INSERT INTO recipes (account_id, image, name, alt, subtitle, ingredients, method) VALUES (:account_id, :image, :type, :alt, :subtitle, :ingredients, :method)';
             $sth = $dbh->prepare($sql);
             $sth->execute(
                 array(
-                    ':user_id' => $user_id,
+                    ':account_id' => $account_id,
                     ':image' => $image,
-                    ':type' => $_POST["type"],
-                    ':breed' => $_POST["breed"],
-                    ':dob' => $_POST["dob"]
+                    ':type' => $_POST["name"],
+                    ':alt' => $_POST["alt"],
+                    ':subtitle' => $_POST["subtitle"],
+                    ':ingredients' => $_POST["ingredients"],
+                    ':method' => $_POST["method"],
                 )
             );
 
-            $_SESSION['success'] = 'Pet added!';
-            header("Location: " . $file_level . "index.php");
+            $_SESSION['success'] = 'Recipe added!';
+            header("Location: " . $file_level . "recipes.php");
             return;
         } catch (PDOException $e) {
 
-            error_log("Pet Creation Failed: " . $e->getMessage());
-            $_SESSION['error'] = 'The pet could not be added';
-            header("Location: " . $file_level . "index.php");
+            error_log("Recipe Creation Failed: " . $e->getMessage());
+            $_SESSION['error'] = 'The recipe could not be added';
+            header("Location: " . $file_level . "recipes.php");
             return;
         }
     }
 } elseif (isset($_POST['cancel'])) {
-    header('Location: ' . $file_level . 'index.php');
+    header('Location: ' . $file_level . 'recipes.php');
     return;
 }
 
@@ -79,13 +81,17 @@ require_once $file_level . "includes/head.php";
 <form enctype="multipart/form-data" method="post">
     <label for="image">Image</label>
     <input type="file" name="image" id="image" /><br />
-    <label for="type">Type</label>
-    <input type="text" name="type" id="type" /><br />
-    <label for="breed">Breed</label>
-    <input type="text" name="breed" id="breed" /><br />
-    <label for="dob">Date of Birth</label>
-    <input type="text" name="dob" id="dob" /><br />
-    <input type="submit" onclick="return validatePet();" name="add" value="Submit" />
+    <label for="name">Type</label>
+    <input type="text" name="name" id="name" /><br />
+    <label for="alt">Alt Text</label>
+    <input type="text" name="alt" id="alt" /><br />
+    <label for="subtitle">Subtitle</label>
+    <input type="text" name="subtitle" id="subtitle" /><br />
+    <label for="ingredients">Ingredients</label>
+    <textarea name="ingredients" id="ingredients"></textarea><br />
+    <label for="method">Method</label>
+    <textarea name="method" id="method"></textarea><br />
+    <input type="submit" onclick="return validateRecipe();" name="add" value="Submit" />
     <input type="submit" name="cancel" value="Cancel" />
 </form>
 

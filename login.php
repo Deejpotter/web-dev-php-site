@@ -16,7 +16,7 @@ if (isset($_SESSION['email'])) {
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    $sql = "SELECT user_id, email, password FROM accounts WHERE email = :email";
+    $sql = "SELECT account_id, email, password FROM accounts WHERE email = :email";
     $sth = $dbh->prepare($sql);
     $sth->bindParam(':email', $_POST['email']);
     $sth->execute();
@@ -28,7 +28,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (password_verify($_POST['password'], $result['password'])) {
 
             $_SESSION['email'] = $_POST['email'];
-            $_SESSION['user_id'] = $result['user_id'];
+            $_SESSION['account_id'] = $result['account_id'];
             $_SESSION['success'] = "You are now logged in!";
             header("Location: " . $file_level . "index.php");
             return;

@@ -26,7 +26,7 @@ require_once $file_level . "includes/head.php";
 <main>
 
     <?php if (isset($_SESSION['email'])) {
-        $sql = 'SELECT pet_id, image, type, breed, dob FROM pets WHERE user_id = "' . $_SESSION['user_id'] . '"';
+        $sql = 'SELECT recipe_id, image, name, alt, subtitle, ingredients, method FROM recipes WHERE account_id = "' . $_SESSION['account_id'] . '"';
         $sth = $dbh->prepare($sql);
 
         if (!empty($sth->execute())) {
@@ -38,7 +38,7 @@ require_once $file_level . "includes/head.php";
             } else {
 
                 // Define variables and set to empty values
-                $image = $type = $breed = $dob = $pet_id = "";
+                $image = $name = $alt = $subtitle = $ingredients = $method = $recipe_id = "";
 
                 for ($i = 0; $i < 2; $i++) {
                     if ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
@@ -46,14 +46,14 @@ require_once $file_level . "includes/head.php";
                         // Data validation
                         // Get unaltered data back from database, then sanitize it to prevenet HTML injection
                         // $image = sanitize_input($row["image"]);
-                        $type = sanitize_input($row["type"]);
-                        $breed = sanitize_input($row["breed"]);
-                        $dob = sanitize_input($row["dob"]);
+                        $name = sanitize_input($row["name"]);
+                        $alt = sanitize_input($row["alt"]);
+                        $subtitle = sanitize_input($row["subtitle"]);
 
                         echo ('<div class="card shadow">');
                         echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="An empty table with a knife." />');
-                        echo ('<a href="' . $file_level . 'recipes/edit.php?pet_id=' . $row['pet_id'] . '">Edit</a>');
-                        echo ('<a href="' . $file_level . 'recipes/delete.php?pet_id=' . $row['pet_id'] . '">Delete</a>');
+                        echo ('<a href="' . $file_level . 'recipes/edit.php?recipe_id=' . $row['recipe_id'] . '">Edit</a>');
+                        echo ('<a href="' . $file_level . 'recipes/delete.php?recipe_id=' . $row['recipe_id'] . '">Delete</a>');
                         echo ('</div>');
                     }
                 }
@@ -63,7 +63,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <!-- recipe.image -->
+        <!-- recipe.image   recipe.alt -->
         <img src="../images/blank-knife.jpg" alt="An empty table with a knife." />
         <div class="container-center">
             <!-- recipe.name -->

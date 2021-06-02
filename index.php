@@ -25,6 +25,7 @@ require_once $file_level . "includes/head.php";
         <div class="container-center">
             <h1>Simple Recipes</h1>
             <h2>Every recipe here is simple.</h2>
+            <a href="<?php echo $file_level; ?>accounts.php" class="link-button shadow">Join Up Here</a>
         </div>
     </section>
 

@@ -49,23 +49,23 @@ function validateLogin() {
     }
 }
 
-function validatePet() {
+function validateRecipe() {
     console.log('Validating');
 
     try {
         type = document.getElementById('type').value;
-        breed = document.getElementById('breed').value;
-        dob = document.getElementById('dob').value;
+        alt = document.getElementById('alt').value;
+        subtitle = document.getElementById('subtitle').value;
         document.getElementById('js_validation_message').style.color = '#d80a0a';
         if (!type) {
             document.getElementById('js_validation_message').innerHTML = "Type field must be completed";
             return false;
         }
-        if (!breed) {
-            document.getElementById('js_validation_message').innerHTML = "Breed field must be completed";
+        if (!alt) {
+            document.getElementById('js_validation_message').innerHTML = "alt field must be completed";
             return false;
         }
-        if (!dob) {
+        if (!subtitle) {
             document.getElementById('js_validation_message').innerHTML = "Date of Birth field must be completed";
             return false;
         }

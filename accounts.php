@@ -6,6 +6,12 @@ header('Content-Type: application/xhtml+xml; charset=utf-8');
 
 session_start();
 
+if (isset($_SESSION['email'])) {
+    $_SESSION["error"] = 'Please logout first.';
+    header("Location: " . $file_level . "index.php");
+    return;
+}
+
 require_once $file_level . "includes/pdo.php";
 
 // Return true if email is valid

@@ -34,6 +34,7 @@
                             echo ('<li><a href="' . $file_level . 'about.php">About</a></li>');
                             echo ('<li><a href="' . $file_level . 'contact.php">Contact</a></li>');
                             echo ('<li><a href="' . $file_level . 'login.php">Login</a></li>');
+                            echo ('<li><a href="' . $file_level . 'accounts.php">New Account</a></li>');
                         } ?>
                     </ul>
                 </nav>
