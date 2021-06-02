@@ -380,6 +380,10 @@ footer {
     box-shadow: var(--dark-trans) -4px 0 12px;
 }
 
+footer a {
+    color: var(--main);
+}
+
 footer .container {
     align-items: center;
     justify-content: space-around;

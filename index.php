@@ -21,10 +21,10 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images/blank-knife.jpg" alt="An empty table with a knife." />
+        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
         <div class="container-center">
             <h1>Simple Recipes</h1>
-            <h2>Every recipe here is simple.</h2>
+            <h2>Create and view your recipes in one place.</h2>
             <a href="<?php echo $file_level; ?>accounts.php" class="link-button shadow">Join Up Here</a>
         </div>
     </section>
@@ -34,11 +34,10 @@ require_once $file_level . "includes/head.php";
         <div class="container-col shadow border-radius">
             <div class="about-text">
                 <h2>All about this website</h2>
-                <p>We have lots of simple recipes. There are so many recipes on this site and they are all really
-                    simple.
-                    There are actually only three recipes but I made it look like there are more by showing the same
-                    one multiple times.
-                    They are all simple though.
+                <p>Create your own recipes and store them all in one place. You can create a new recipe, edit or delete
+                    a current recipe, and keep all of your recipes stored here for the future. Maybe you can see
+                    everyone else's recipes as well if I get that far. For now, go and <a
+                        href="<?php echo $file_level; ?>recipes/add.php">create some recipes</a>.
                 </p>
             </div>
             <div>

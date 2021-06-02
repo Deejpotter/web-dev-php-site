@@ -16,7 +16,7 @@ require_once $file_level . "includes/pdo.php";
 
 if (isset($_POST['add'])) {
 
-    if (($_POST["image"] !== "") && ($_POST["name"] !== "") && ($_POST["alt"] !== "") && ($_POST["subtitle"] !== "")) {
+    if (($_POST["image"] !== "") && ($_POST["name"] !== "") && ($_POST["alt"] !== "") && ($_POST["subtitle"] !== "") && ($_POST["ingredients"] !== "") && ($_POST["method"] !== "")) {
 
         try {
 
@@ -75,29 +75,32 @@ $title = "Add | Recipe thing";
 require_once $file_level . "includes/head.php";
 ?>
 
+<main>
+    <div class="container-col">
+        <h1>Add recipe</h1>
 
-<h1>Add recipe</h1>
+        <form enctype="multipart/form-data" method="post">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" /><br />
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" /><br />
+            <label for="alt">Alt Text</label>
+            <input type="text" name="alt" id="alt" /><br />
+            <label for="subtitle">Subtitle</label>
+            <input type="text" name="subtitle" id="subtitle" /><br />
+            <label for="ingredients">Ingredients</label>
+            <textarea name="ingredients" id="ingredients"></textarea><br />
+            <label for="method">Method</label>
+            <textarea name="method" id="method"></textarea><br />
+            <input type="submit" onclick="return validateRecipe();" name="add" value="Submit" />
+            <input type="submit" name="cancel" value="Cancel" />
+        </form>
 
-<form enctype="multipart/form-data" method="post">
-    <label for="image">Image</label>
-    <input type="file" name="image" id="image" /><br />
-    <label for="name">Type</label>
-    <input type="text" name="name" id="name" /><br />
-    <label for="alt">Alt Text</label>
-    <input type="text" name="alt" id="alt" /><br />
-    <label for="subtitle">Subtitle</label>
-    <input type="text" name="subtitle" id="subtitle" /><br />
-    <label for="ingredients">Ingredients</label>
-    <textarea name="ingredients" id="ingredients"></textarea><br />
-    <label for="method">Method</label>
-    <textarea name="method" id="method"></textarea><br />
-    <input type="submit" onclick="return validateRecipe();" name="add" value="Submit" />
-    <input type="submit" name="cancel" value="Cancel" />
-</form>
+        <p id="js_validation_message"></p>
 
-<p id="js_validation_message"></p>
-
-<script src="js/validate.js"></script>
+        <script src="js/validate.js"></script>
+    </div>
+</main>
 
 <?php
 // Add the footer
