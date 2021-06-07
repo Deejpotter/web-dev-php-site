@@ -22,7 +22,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="./images/blank-spoon.jpg" alt="An empty table with a spoon." />
+        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
         <div class="container-center">
             <h1>About Page</h1>
             <h2>Find out about cooking and stuff.</h2>

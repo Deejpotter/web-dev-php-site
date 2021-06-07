@@ -81,38 +81,42 @@ $title = "Accounts | Recipe thing";
 require_once $file_level . "includes/head.php";
 ?>
 
+<main>
 
-<h1>User Accounts</h1>
+    <!-- Hero section -->
+    <section class="hero shadow">
+        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
+        <div class="container-center">
+            <h1>Create an account</h1>
+            <h2>Create a new account.</h2>
+        </div>
+    </section>
 
-<nav>
-    <a href="index.php"></a>
-    <a href="login.php"></a>
-</nav>
+    <section id="create">
 
-<section id="create">
+        <div class="container-col">
+            <h2>Create New Account</h2>
 
-    <hr />
+            <?php
+            // Flash message
+            require_once $file_level . "includes/flash.php";
+            ?>
 
-    <h2>Create New Account</h2>
+            <form method="post">
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" /><br />
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" /><br />
+                <label for="retype">Re-type Password</label>
+                <input type="password" name="retype" id="retype" /><br />
+                <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+            </form>
 
-    <?php
-    // Flash message
-    require_once $file_level . "includes/flash.php";
-    ?>
+            <p id="js_validation_message"></p>
+        </div>
 
-    <form method="post">
-        <label for="email">Email</label>
-        <input type="text" name="email" id="email" /><br />
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" /><br />
-        <label for="retype">Re-type Password</label>
-        <input type="password" name="retype" id="retype" /><br />
-        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
-    </form>
-
-    <p id="js_validation_message"></p>
-
-</section>
+    </section>
+</main>
 
 <script src="js/validate.js"></script>
 <?php

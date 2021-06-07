@@ -13,7 +13,7 @@
     --dark: #1B1F22;
     --dark-trans: #1b1f2e99;
 
-    --heading-font: 'Knewave', cursive;
+    --heading-font: 'Knewave', serif;
     --body-font: 'Oxygen', sans-serif;
 
     --breakpoint-1: 650px;
@@ -154,12 +154,16 @@ p {
     padding: 0;
 }
 
+.hero .container-center {
+    transform: translateY(-30vh);
+}
+
 .hero img {
     width: 100%;
     height: 100%;
 }
 
-.hero h1 {
+/* .hero h1 {
     transform: translateY(-30vh);
 }
 
@@ -181,7 +185,7 @@ p {
         font-size: 2em;
         transform: translateY(-40vh);
     }
-}
+} */
 
 
 /* --------------- Navbar ------------------- */

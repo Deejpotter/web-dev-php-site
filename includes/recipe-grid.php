@@ -5,6 +5,8 @@
     if (!empty($sth->execute())) {
 
         echo ('<section>');
+        echo ('<div class="grid">');
+
         require_once $file_level . "includes/flash.php";
 
         if ($sth->rowCount() == 0) {
@@ -14,7 +16,6 @@
             // Define variables and set to empty values
             $image = $name = $alt = $subtitle = $ingredients = $method = $recipe_id = "";
 
-            echo ('<div class="grid">');
 
             while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 
@@ -29,12 +30,13 @@
 
                 echo ('<div class="card shadow">');
                 echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="An empty table with a knife." />');
+                echo ('<a href="' . $file_level . 'recipes/view.php?recipe_id=' . $row['recipe_id'] . '">View</a>');
                 echo ('<a href="' . $file_level . 'recipes/edit.php?recipe_id=' . $row['recipe_id'] . '">Edit</a>');
                 echo ('<a href="' . $file_level . 'recipes/delete.php?recipe_id=' . $row['recipe_id'] . '">Delete</a>');
                 echo ('</div>');
             }
-            echo ('</div>');
         }
+        echo ('</div>');
         echo ('</section>');
     }
 }

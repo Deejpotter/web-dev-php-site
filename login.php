@@ -56,10 +56,17 @@ require_once $file_level . "includes/head.php";
 ?>
 
 <main>
+
+    <!-- Hero section -->
+    <section class="hero shadow">
+        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
+        <div class="container-center">
+            <h1>All Recipes</h1>
+            <h2>This is a list of all the recipes.</h2>
+        </div>
+    </section>
+
     <section class="container-center" id="login">
-
-        <h1>Login</h1>
-
         <?php
         // Flash message
         require_once $file_level . "includes/flash.php";
