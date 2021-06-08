@@ -29,11 +29,11 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A guinea pig." />
         <div class="container-center">
             <h1>All Recipes</h1>
             <h2>This is a list of all the recipes.</h2>
-            <a href="<?php echo $file_level; ?>recipes/add.php" class="link-button shadow">Try this instead</a>
+            <a href="<?php echo $file_level; ?>recipes/add.php" class="link-button shadow">Add a new recipe here</a>
         </div>
     </section>
 

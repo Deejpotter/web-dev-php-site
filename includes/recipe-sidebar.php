@@ -1,4 +1,3 @@
-<!-- Sidebar -->
 <aside class="sidebar">
     <?php if (isset($_SESSION['email'])) {
         $sql = 'SELECT recipe_id, image, name, alt, subtitle, ingredients, method FROM recipes WHERE account_id = "' . $_SESSION['account_id'] . '"';
@@ -30,6 +29,7 @@
                         echo ('<div class="card shadow">');
                         // recipe.image     recipe.alt
                         echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="An empty table with a knife." />');
+                        echo ('<a href="' . $file_level . 'recipes/view.php?recipe_id=' . $row['recipe_id'] . '">View</a>');
                         echo ('<a href="' . $file_level . 'recipes/edit.php?recipe_id=' . $row['recipe_id'] . '">Edit</a>');
                         echo ('<a href="' . $file_level . 'recipes/delete.php?recipe_id=' . $row['recipe_id'] . '">Delete</a>');
                         echo ('</div>');

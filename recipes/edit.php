@@ -20,15 +20,17 @@ if (isset($_SESSION['email'])) {
     try {
 
         // Get unaltered data back from database, then sanitise it to prevent HTML injection
-        $sql = 'SELECT image, name, alt, subtitle FROM recipes WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
+        $sql = 'SELECT image, name, alt, subtitle, ingredients, method FROM recipes WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
         $sth = $dbh->prepare($sql);
         $sth->execute();
 
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         $old_image = base64_encode($row['image']);
-        $name = sanitize_input($row['type']);
-        $alt = sanitize_input($row['alt']);
-        $subtitle = sanitize_input($row['subtitle']);
+        $name = sanitize_input($row["name"]);
+        $alt = sanitize_input($row["alt"]);
+        $subtitle = sanitize_input($row["subtitle"]);
+        $ingredients = sanitize_input($row["ingredients"]);
+        $method = sanitize_input($row["method"]);
     } catch (PDOException $e) {
 
         error_log("Invalid recipe profile: " . $e->getMessage());
@@ -40,7 +42,7 @@ if (isset($_SESSION['email'])) {
 
 if (isset($_POST['edit'])) {
 
-    if (($_POST['type'] !== "") && ($_POST['alt'] !== "") && ($_POST['subtitle'] !== "")) {
+    if (($_POST["image"] !== "") && ($_POST["name"] !== "") && ($_POST["alt"] !== "") && ($_POST["subtitle"] !== "") && ($_POST["ingredients"] !== "") && ($_POST["method"] !== "")) {
 
         // Update with a new image
         if (isset($_FILES['image']['tmp_name']) && !empty($_FILES['image']['tmp_name'])) {
@@ -57,14 +59,16 @@ if (isset($_POST['edit'])) {
 
             try {
 
-                $sql = 'UPDATE recipes SET image = :image, name = :type, alt = :alt, subtitle = :subtitle WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
+                $sql = 'UPDATE recipes SET image = :image, name = :name, alt = :alt, subtitle = :subtitle, ingredients = :ingredients, method = :method WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
                 $sth = $dbh->prepare($sql);
                 $sth->execute(
                     array(
                         ':image' => $image,
-                        ':type' => $_POST["name"],
+                        ':name' => $_POST["name"],
                         ':alt' => $_POST["alt"],
-                        ':subtitle' => $_POST["subtitle"]
+                        ':subtitle' => $_POST["subtitle"],
+                        ':ingredients' => $_POST["ingredients"],
+                        ':method' => $_POST["method"]
                     )
                 );
 
@@ -83,13 +87,15 @@ if (isset($_POST['edit'])) {
             // Update keeping existing image
             try {
 
-                $sql = 'UPDATE recipes SET type = :type, alt = :alt, subtitle = :subtitle WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
+                $sql = 'UPDATE recipes SET name = :name, alt = :alt, subtitle = :subtitle, ingredients = :ingredients, method = :method WHERE recipe_id = "' . $_GET['recipe_id'] . '"';
                 $sth = $dbh->prepare($sql);
                 $sth->execute(
                     array(
-                        ':type' => $_POST["name"],
+                        ':name' => $_POST["name"],
                         ':alt' => $_POST["alt"],
-                        ':subtitle' => $_POST["subtitle"]
+                        ':subtitle' => $_POST["subtitle"],
+                        ':ingredients' => $_POST["ingredients"],
+                        ':method' => $_POST["method"]
                     )
                 );
 
@@ -121,24 +127,35 @@ require_once $file_level . "includes/head.php";
 ?>
 
 
-<h1>Edit Recipe</h1>
+<main>
+    <div class="container-col">
 
-<img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
+        <?php require_once $file_level . "includes/flash.php"; ?>
 
-<form method="post" enctype="multipart/form-data">
-    <label for="image">Image</label>
-    <input type="file" name="image" id="image" /><br />
-    <label for="name">Type</label>
-    <input type="text" name="name" id="name" value="<?php echo $name; ?>" /><br />
-    <label for="alt">alt</label>
-    <input type="text" name="alt" id="alt" value="<?php echo $alt; ?>" /><br />
-    <label for="subtitle">Date of Birth</label>
-    <input type="text" name="subtitle" id="subtitle" value="<?php echo $subtitle; ?>" /><br />
-    <input type="submit" onclick="return validateRecipe();" name="edit" value="Edit Recipe" />
-    <input type="submit" name="cancel" value="Cancel" />
-</form>
+        <h1>Edit Recipe</h1>
 
-<p id="js_validation_message"></p>
+        <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
+
+        <form method="post" enctype="multipart/form-data">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" /><br />
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" value="<?php echo $name; ?>" /><br />
+            <label for=" alt">Alt Text</label>
+            <input type="text" name="alt" id="alt" value="<?php echo $alt; ?>" /><br />
+            <label for="subtitle">Subtitle</label>
+            <input type="text" name="subtitle" id="subtitle" value="<?php echo $subtitle; ?>" /><br />
+            <label for="ingredients">Ingredients</label>
+            <textarea name="ingredients" id="ingredients" rows="5" cols="50"><?php echo $ingredients; ?></textarea><br />
+            <label for="method">Method</label>
+            <textarea name="method" id="method" rows="5" cols="50"><?php echo $method; ?></textarea><br />
+            <input type="submit" onclick="return validateRecipe();" name="edit" value="Submit" />
+            <input type="submit" name="cancel" value="Cancel" />
+        </form>
+
+        <p id="js_validation_message"></p>
+    </div>
+</main>
 
 <script src="js/validate.js"></script>
 

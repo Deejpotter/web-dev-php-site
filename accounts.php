@@ -85,7 +85,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A guinea pig." />
         <div class="container-center">
             <h1>Create an account</h1>
             <h2>Create a new account.</h2>

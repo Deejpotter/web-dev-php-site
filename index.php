@@ -21,11 +21,18 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\guinea-pig-242520_640.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
         <div class="container-center">
             <h1>Simple Recipes</h1>
             <h2>Create and view your recipes in one place.</h2>
-            <a href="<?php echo $file_level; ?>accounts.php" class="link-button shadow">Join Up Here</a>
+            <?php
+            if (!isset($_SESSION['email'])) {
+                echo ('<a href= "' . $file_level . 'accounts.php" class="link-button shadow">Join Up Here</a>');
+            } else {
+                echo ('<a href= "' . $file_level . 'recipes/add.php" class="link-button shadow">Add a new recipe</a>');
+            }
+            ?>
+
         </div>
     </section>
 
@@ -36,8 +43,7 @@ require_once $file_level . "includes/head.php";
                 <h2>All about this website</h2>
                 <p>Create your own recipes and store them all in one place. You can create a new recipe, edit or delete
                     a current recipe, and keep all of your recipes stored here for the future. Maybe you can see
-                    everyone else's recipes as well if I get that far. For now, go and <a
-                        href="<?php echo $file_level; ?>recipes/add.php">create some recipes</a>.
+                    everyone else's recipes as well if I get that far. For now, go and <a href="<?php echo $file_level; ?>recipes/add.php">create some recipes</a>.
                 </p>
             </div>
             <div>

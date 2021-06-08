@@ -13,6 +13,7 @@ if (!isset($_SESSION['email'])) {
 }
 
 require_once $file_level . "includes/pdo.php";
+require_once $file_level . "includes/util.php";
 
 if (isset($_POST['add'])) {
 
@@ -76,6 +77,8 @@ require_once $file_level . "includes/head.php";
 ?>
 
 <main>
+    <?php require_once $file_level . "includes/flash.php"; ?>
+
     <div class="container-col">
         <h1>Add recipe</h1>
 
