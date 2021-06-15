@@ -111,7 +111,7 @@ require_once $file_level . "includes/head.php";
 
                 <p id="js_validation_message"></p>
 
-                <script src="js/validate.js"></script>
+                <script src="<?php echo $file_level; ?>js/validate.js"></script>
             </div>
         </article>
         <aside class="sidebar">

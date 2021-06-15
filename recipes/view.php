@@ -28,7 +28,7 @@ if (!empty($sth->execute())) {
 
         $row = $sth->fetch(PDO::FETCH_ASSOC);
         // Define variables and set to empty values
-        $image = $name = $alt = $subtitle = $recipe_id = "";
+        $image = $name = $alt = $subtitle = $recipe_id = $ingredients = $method = "";
 
         // Data validation
         // Get unaltered data back from database, then sanitize it to prevenet HTML injection
@@ -44,39 +44,39 @@ if (!empty($sth->execute())) {
         require_once $file_level . "includes/head.php";
 ?>
 
-<main>
+        <main>
 
-    <!-- Hero section -->
-    <section class="hero shadow">
-        <?php echo ('<img src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="' . $alt . '" />'); ?>
-        <div class="container-center">
-            <h1><?php echo $name; ?></h1>
-            <h2><?php echo $subtitle; ?></h2>
-        </div>
-    </section>
+            <!-- Hero section -->
+            <section class="hero shadow">
+                <?php echo ('<img src="data:image/jpeg;base64,' . base64_encode($image) . '" alt="' . $alt . '" />'); ?>
+                <div class="container-center">
+                    <h1><?php echo $name; ?></h1>
+                    <h2><?php echo $subtitle; ?></h2>
+                </div>
+            </section>
 
-    <div class="container-sidebar border-radius shadow">
-        <?php require_once $file_level . "includes/flash.php"; ?>
-        <!-- Recipe section -->
-        <article class="recipe">
-            <div class="container-col">
-                <h2><?php echo $name; ?></h2>
-                <h3>Ingredients</h3>
-                <?php
+            <div class="container-sidebar border-radius shadow">
+                <?php require_once $file_level . "includes/flash.php"; ?>
+                <!-- Recipe section -->
+                <article class="recipe">
+                    <div class="container-col">
+                        <h2><?php echo $name; ?></h2>
+                        <h3>Ingredients</h3>
+                        <?php
                         for ($i = 0; $i < count($ingredients); $i++) {
                             echo ('<li>' . $ingredients[$i] . '</li>');
                         }
                         ?>
-                <h3>Method</h3>
-                <ol class="method">
-                    <?php
+                        <h3>Method</h3>
+                        <ol class="method">
+                            <?php
                             for ($i = 0; $i < count($method); $i++) {
                                 echo ('<li>' . $method[$i] . '</li>');
                             }
                             ?>
-                </ol>
-            </div>
-        </article>
+                        </ol>
+                    </div>
+                </article>
 
         <?php
         // Add the recipe sidebar. Requires util to be imported.
@@ -84,14 +84,11 @@ if (!empty($sth->execute())) {
     }
 } ?>
 
-    </div>
+            </div>
 
-</main>
+        </main>
 
-
-
-
-<?php
+        <?php
         // Add the footer
         require_once $file_level . "includes/footer.php";
         ?>

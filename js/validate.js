@@ -53,20 +53,35 @@ function validateRecipe() {
     console.log('Validating');
 
     try {
-        type = document.getElementById('type').value;
+        image = document.getElementById('image').value;
+        recipeName = document.getElementById('name').value;
         alt = document.getElementById('alt').value;
         subtitle = document.getElementById('subtitle').value;
+        ingredients = document.getElementById('ingredients').value;
+        method = document.getElementById('method').value;
         document.getElementById('js_validation_message').style.color = '#d80a0a';
-        if (!type) {
-            document.getElementById('js_validation_message').innerHTML = "Type field must be completed";
+        if (!image) {
+            document.getElementById('js_validation_message').innerHTML = "An image must be selected";
+            return false;
+        }
+        if (!recipeName) {
+            document.getElementById('js_validation_message').innerHTML = "Name field must be completed";
             return false;
         }
         if (!alt) {
-            document.getElementById('js_validation_message').innerHTML = "alt field must be completed";
+            document.getElementById('js_validation_message').innerHTML = "Alt field must be completed";
             return false;
         }
         if (!subtitle) {
             document.getElementById('js_validation_message').innerHTML = "Date of Birth field must be completed";
+            return false;
+        }
+        if (!ingredients) {
+            document.getElementById('js_validation_message').innerHTML = "Ingredients field must be completed";
+            return false;
+        }
+        if (!method) {
+            document.getElementById('js_validation_message').innerHTML = "Method field must be completed";
             return false;
         }
         console.log("Validated successfully");
