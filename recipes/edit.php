@@ -134,22 +134,22 @@ require_once $file_level . "includes/head.php";
         <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Edit a recipe</h1>
-            <h2>Fill in the form below to edit your recipe.</h2>
         </div>
     </section>
 
+    <h2>Fill in the form below to edit your recipe</h2>
     <!-- About section -->
     <div class="container-sidebar light shadow border-radius">
         <article class="about-article">
             <div class="container-col">
-                <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
-
+                <h2>Edit form</h2>
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
                 <form method="post" enctype="multipart/form-data">
                     <label for="image">Image</label>
                     <input type="file" name="image" id="image" /><br />
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" value="<?php echo $name; ?>" /><br />
-                    <label for=" alt">Alt Text</label>
+                    <label for="alt">Alt Text</label>
                     <input type="text" name="alt" id="alt" value="<?php echo $alt; ?>" /><br />
                     <label for="subtitle">Subtitle</label>
                     <input type="text" name="subtitle" id="subtitle" value="<?php echo $subtitle; ?>" /><br />

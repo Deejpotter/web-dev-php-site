@@ -8,6 +8,7 @@
             require_once $file_level . "includes/flash.php";
 
             if ($sth->rowCount() == 0) {
+                echo '<h2>Oops...</h2>';
                 echo '<p>No data found</p>';
             } else {
 
@@ -27,7 +28,6 @@
                         $method = sanitize_input($row["method"]);
 
                         echo ('<div class="card shadow">');
-                        // recipe.image     recipe.alt
                         echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $alt . '" />');
                         echo ('<div class="container-card-text">');
                         echo ('<a href="' . $file_level . 'recipes/view.php?recipe_id=' . $row['recipe_id'] . '">View</a>');

@@ -62,11 +62,14 @@ if (!empty($sth->execute())) {
                     <div class="container-col">
                         <h2><?php echo $name; ?></h2>
                         <h3>Ingredients</h3>
+                        <ul class="ingredients">
                         <?php
                         for ($i = 0; $i < count($ingredients); $i++) {
                             echo ('<li>' . $ingredients[$i] . '</li>');
                         }
                         ?>
+                        </ul>
+                        
                         <h3>Method</h3>
                         <ol class="method">
                             <?php

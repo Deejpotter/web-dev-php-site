@@ -20,7 +20,7 @@ require_once $file_level . "includes/util.php";
 <?php
 // Add the head
 $file_level = "";
-$title = "Home | Your Recipes";
+$title = "All Recipes | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 
@@ -29,7 +29,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>All Recipes</h1>
             <h2>This is a list of all your recipes.</h2>

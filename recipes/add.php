@@ -84,13 +84,13 @@ require_once $file_level . "includes/head.php";
         <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Add a recipe</h1>
-            <h2>Fill in the form below to create a new recipe.</h2>
         </div>
     </section>
 
     <!-- About section -->
     <div class="container-sidebar light shadow border-radius">
         <article class="about-article">
+            <h2>Fill in the form below to create a new recipe.</h2>
             <div class="container-col">
                 <form enctype="multipart/form-data" method="post">
                     <label for="image">Image</label>

@@ -10,12 +10,14 @@
         require_once $file_level . "includes/flash.php";
 
         if ($sth->rowCount() == 0) {
+            echo '<h2>Oops...</h2>';
             echo '<p>No data found</p>';
         } else {
 
             // Define variables and set to empty values
             $image = $name = $alt = $subtitle = $ingredients = $method = $recipe_id = "";
 
+            echo ('<h2>All recipes</h2>');
 
             while ($row = $sth->fetch(PDO::FETCH_ASSOC)) {
 
@@ -27,7 +29,7 @@
                 $subtitle = sanitize_input($row["subtitle"]);
                 $ingredients = sanitize_input($row["ingredients"]);
                 $method = sanitize_input($row["method"]);
-
+                
                 echo ('<div class="card shadow">');
                 echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $alt . '" />');
                 echo ('<div class="container-card-text">');

@@ -58,9 +58,11 @@ if (isset($_SESSION['email'])) {
             }
 
             $recipe_id = sanitize_input($row['recipe_id']);
-            $name = sanitize_input($row['name']);
-            $alt = sanitize_input($row['alt']);
-            $subtitle = sanitize_input($row['subtitle']);
+            $name = sanitize_input($row["name"]);
+            $alt = sanitize_input($row["alt"]);
+            $subtitle = sanitize_input($row["subtitle"]);
+            $ingredients = sanitize_input($row["ingredients"]);
+            $method = sanitize_input($row["method"]);
         }
     } catch (PDOException $e) {
 
@@ -86,18 +88,21 @@ require_once $file_level . "includes/head.php";
         <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Delete a recipe</h1>
-            <h2>Press the delete button below to delete your recipe.</h2>
         </div>
     </section>
 
+    <h2>Press the delete button below to delete your recipe.</h2>
     <!-- About section -->
     <div class="container-sidebar light shadow border-radius">
         <article class="about-article">
             <div class="container-col">
-                <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $alt; ?>" width="100" /><br />
-                <p>Type: <?php echo $name ?></p>
-                <p>alt: <?php echo $alt ?></p>
-                <p>Date of Birth: <?php echo $subtitle ?></p>
+            <h2>Delete form</h2>
+                <img src="data:image/jpeg;base64,<?php echo base64_encode($row['image']) ?>" alt="<?php echo $alt; ?>" width="100" /><br />
+                <p><b>Name: </b><?php echo $name ?></p>
+                <p><b>Alt: </b><?php echo $alt ?></p>
+                <p><b>Subtitle: </b><?php echo $subtitle ?></p>
+                <p><b>Ingredients: </b><?php echo $ingredients ?></p>
+                <p><b>Method:</b><?php echo $method ?></p>
 
                 <form method="post">
                     <input type="hidden" name="recipe_id" value="<?php echo $recipe_id; ?>" />

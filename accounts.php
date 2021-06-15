@@ -84,16 +84,14 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Create an account</h1>
-            <h2>Create a new account.</h2>
         </div>
     </section>
 
-    <section id="create">
-
-        <!-- About section -->
+    <section class="container-center" id="create">
+        <h2>Create a new account</h2>
         <div class="container-sidebar light shadow border-radius">
             <article class="about-article">
                 <div class="container-col">
@@ -101,6 +99,8 @@ require_once $file_level . "includes/head.php";
                     // Flash message
                     require_once $file_level . "includes/flash.php";
                     ?>
+
+                    <h2>Account creation</h2>
 
                     <form method="post">
                         <label for="email">Email</label>

@@ -59,15 +59,14 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
-            <h1>All Recipes</h1>
-            <h2>This is a list of all the recipes.</h2>
+            <h1>Log in</h1>
         </div>
     </section>
 
     <section class="container-center" id="login">
-        <!-- About section -->
+        <h2>Log in to your account</h2>
         <div class="container-sidebar light shadow border-radius">
             <article class="about-article">
                 <div class="container-col">
@@ -76,6 +75,7 @@ require_once $file_level . "includes/head.php";
                     require_once $file_level . "includes/flash.php";
                     ?>
 
+                    <h2>Login form</h2>
                     <form method="post">
                         <label for="email">Email</label>
                         <input type="text" name="email" id="email" /><br />
@@ -90,8 +90,9 @@ require_once $file_level . "includes/head.php";
                 </div>
             </article>
             <aside class="sidebar">
-                <p>Please enter your login details in the form.</p>
-                <p>If you don't have an account, create one <a href="<?php echo $file_level; ?>accounts.php">here</a></p>
+                <h2>Please enter your login details in the form.</h2>
+                <p>If you don't have an account, create one <a href="<?php echo $file_level; ?>accounts.php">here</a>
+                </p>
             </aside>
         </div>
 
