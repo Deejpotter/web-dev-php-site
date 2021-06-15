@@ -83,7 +83,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Delete a recipe</h1>
             <h2>Press the delete button below to delete your recipe.</h2>
@@ -94,7 +94,7 @@ require_once $file_level . "includes/head.php";
     <div class="container-sidebar light shadow border-radius">
         <article class="about-article">
             <div class="container-col">
-                <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
+                <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $alt; ?>" width="100" /><br />
                 <p>Type: <?php echo $name ?></p>
                 <p>alt: <?php echo $alt ?></p>
                 <p>Date of Birth: <?php echo $subtitle ?></p>

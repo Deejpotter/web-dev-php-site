@@ -30,9 +30,11 @@
 
                 echo ('<div class="card shadow">');
                 echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $alt . '" />');
+                echo ('<div class="container-card-text">');
                 echo ('<a href="' . $file_level . 'recipes/view.php?recipe_id=' . $row['recipe_id'] . '">View</a>');
                 echo ('<a href="' . $file_level . 'recipes/edit.php?recipe_id=' . $row['recipe_id'] . '">Edit</a>');
                 echo ('<a href="' . $file_level . 'recipes/delete.php?recipe_id=' . $row['recipe_id'] . '">Delete</a>');
+                echo ('</div>');
                 echo ('</div>');
             }
         }
@@ -40,3 +42,4 @@
         echo ('</section>');
     }
 }
+?>

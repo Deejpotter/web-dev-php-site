@@ -76,7 +76,6 @@ $dbh = null;
 
 <?php
 // Add the head
-$file_level = "";
 $title = "Accounts | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
@@ -85,7 +84,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Create an account</h1>
             <h2>Create a new account.</h2>
@@ -94,27 +93,36 @@ require_once $file_level . "includes/head.php";
 
     <section id="create">
 
-        <div class="container-col">
-            <h2>Create New Account</h2>
+        <!-- About section -->
+        <div class="container-sidebar light shadow border-radius">
+            <article class="about-article">
+                <div class="container-col">
+                    <?php
+                    // Flash message
+                    require_once $file_level . "includes/flash.php";
+                    ?>
 
-            <?php
-            // Flash message
-            require_once $file_level . "includes/flash.php";
-            ?>
+                    <form method="post">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" /><br />
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" /><br />
+                        <label for="retype">Re-type Password</label>
+                        <input type="password" name="retype" id="retype" /><br />
+                        <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
+                    </form>
 
-            <form method="post">
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" /><br />
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" /><br />
-                <label for="retype">Re-type Password</label>
-                <input type="password" name="retype" id="retype" /><br />
-                <input type="submit" onclick="return validateAccount();" name="submit" value="Submit" />
-            </form>
+                    <p id="js_validation_message"></p>
 
-            <p id="js_validation_message"></p>
+                    <script src="<?php echo $file_level; ?>js/validate.js"></script>
+                </div>
+            </article>
+            <aside class="sidebar">
+                <p>Please enter your new account details in the form.</p>
+                <p>If you already have an account, log in <a href="<?php echo $file_level; ?>login.php">here</a>
+                </p>
+            </aside>
         </div>
-
     </section>
 </main>
 

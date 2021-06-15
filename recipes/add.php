@@ -81,7 +81,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>Add a recipe</h1>
             <h2>Fill in the form below to create a new recipe.</h2>

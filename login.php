@@ -59,7 +59,7 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>All Recipes</h1>
             <h2>This is a list of all the recipes.</h2>
@@ -67,22 +67,33 @@ require_once $file_level . "includes/head.php";
     </section>
 
     <section class="container-center" id="login">
-        <?php
-        // Flash message
-        require_once $file_level . "includes/flash.php";
-        ?>
+        <!-- About section -->
+        <div class="container-sidebar light shadow border-radius">
+            <article class="about-article">
+                <div class="container-col">
+                    <?php
+                    // Flash message
+                    require_once $file_level . "includes/flash.php";
+                    ?>
 
-        <form method="post">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" /><br />
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" /><br />
-            <input type="submit" onclick="return validateLogin();" value="Login" />
-        </form>
+                    <form method="post">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" /><br />
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" /><br />
+                        <input type="submit" onclick="return validateLogin();" value="Login" />
+                    </form>
 
-        <p id="js_validation_message"></p>
+                    <p id="js_validation_message"></p>
 
-        <script src="<?php echo $file_level ?>js/validate.js"></script>
+                    <script src="<?php echo $file_level; ?>js/validate.js"></script>
+                </div>
+            </article>
+            <aside class="sidebar">
+                <p>Please enter your login details in the form.</p>
+                <p>If you don't have an account, create one <a href="<?php echo $file_level; ?>accounts.php">here</a></p>
+            </aside>
+        </div>
 
     </section>
 </main>

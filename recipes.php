@@ -29,10 +29,10 @@ require_once $file_level . "includes/head.php";
 
     <!-- Hero section -->
     <section class="hero shadow">
-        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A guinea pig." />
+        <img src="<?php echo $file_level; ?>images\main-hero.jpg" alt="A bench with a tablecloth." />
         <div class="container-center">
             <h1>All Recipes</h1>
-            <h2>This is a list of all the recipes.</h2>
+            <h2>This is a list of all your recipes.</h2>
             <a href="<?php echo $file_level; ?>recipes/add.php" class="link-button shadow">Add a new recipe here</a>
         </div>
     </section>

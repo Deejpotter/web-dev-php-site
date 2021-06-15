@@ -361,6 +361,15 @@ input[type=checkbox]:checked~#menu {
     }
 }
 
+.container-card-text {
+    display: flex;
+    transform: translateY(-150%);
+}
+
+.container-card-text a {
+    padding: 0 .5em;
+}
+
 .card {
     display: flex;
     flex-direction: column;
@@ -399,7 +408,6 @@ input[type=checkbox]:checked~#menu {
 .card a {
     font-size: 1.5em;
     color: var(--dark);
-    transform: translateY(-200px);
     text-decoration: underline dotted .1em;
 }
 
