@@ -14,7 +14,7 @@ require_once $file_level . "includes/util.php";
 <?php
 // Add the head
 $file_level = "";
-$title = "Home | Recipe thing";
+$title = "Home | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 
@@ -50,10 +50,10 @@ require_once $file_level . "includes/head.php";
             </div>
         </article>
 
-        <?php
-        // Add the recipe sidebar. Requires util to be imported.
-        require_once $file_level . "includes/recipe-sidebar.php";
-        ?>
+            <?php
+            // Add the recipe sidebar. Requires util to be imported.
+            require_once $file_level . "includes/recipe-sidebar.php";
+            ?>
 
     </div>
 

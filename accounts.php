@@ -77,7 +77,7 @@ $dbh = null;
 <?php
 // Add the head
 $file_level = "";
-$title = "Accounts | Recipe thing";
+$title = "Accounts | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 

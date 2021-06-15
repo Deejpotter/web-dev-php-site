@@ -51,7 +51,7 @@ $dbh = null;
 
 <?php
 // Add the head
-$title = "Login | Recipe thing";
+$title = "Login | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 

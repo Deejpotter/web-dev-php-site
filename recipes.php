@@ -20,7 +20,7 @@ require_once $file_level . "includes/util.php";
 <?php
 // Add the head
 $file_level = "";
-$title = "Home | Recipe thing";
+$title = "Home | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 

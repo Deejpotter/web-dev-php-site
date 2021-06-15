@@ -16,7 +16,7 @@ if (!isset($_SESSION['email'])) {
 
 <?php
 // Add the head
-$title = "Lost | Recipe thing";
+$title = "Lost | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 

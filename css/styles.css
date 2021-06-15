@@ -1,20 +1,20 @@
 /* --------------- Imports ------------------- */
 
-@import url('https://fonts.googleapis.com/css2?family=Knewave&family=Oxygen:wght@300;400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap');
 
 /* --------------- Variables ------------------- */
 
 :root {
-    --main: #FF4B3E;
-    --accent-green: #8FC93A;
-    --accent-blue: #0496FF;
-    --light: #F3F5F6;
+    --main: #FFA69E;
+    --accent-pink: #AA4465;
+    --accent-blue: #93E1D8;
+    --accent-purple: #462255;
+    --light: #DDFFF7;
     --dark: #1B1F22;
     --dark-trans: #1b1f2e99;
 
-    --heading-font: 'Knewave', serif;
-    --body-font: 'Oxygen', sans-serif;
+    --heading-font: 'Courgette', cursive;
+    --body-font: 'Montserrat', sans-serif;
 
     --breakpoint-1: 650px;
     --breakpoint-2: 1200px;
@@ -28,7 +28,7 @@
 
 body {
     font-family: var(--body-font);
-    background-color: var(--main);
+    background-color: var(--accent-blue);
     color: var(--dark);
     margin: 0;
     box-sizing: border-box;
@@ -60,7 +60,7 @@ h1 {
 }
 
 a {
-    color: var(--light);
+    color: var(--accent-purple);
     font-family: var(--heading-font);
     text-decoration: none;
 }
@@ -80,14 +80,13 @@ p {
     margin: 0 auto;
 }
 
-
 .container-center {
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0 1em;
+    padding: 1em;
     max-width: var(--breakpoint-2);
     margin: 0 auto;
 }
@@ -117,15 +116,37 @@ p {
     min-height: 5em;
     max-width: var(--breakpoint-2);
     margin: 0 auto;
+    padding: 1em;
+    justify-content: space-around;
     /* Use this to render line breaks */
     /* white-space: pre-wrap; */
+}
+
+.container-sidebar-center {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1em;
+    max-width: var(--breakpoint-2);
+    margin: 0 auto;
+}
+@media (min-width: 700px) {
+    .container-sidebar-center {
+        max-width: var(--breakpoint-1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .link-button {
     display: flex;
     align-items: center;
-    background: var(--accent-blue);
-    color: var(--dark);
+    background: var(--accent-pink);
+    color: var(--light);
     width: fit-content;
     height: 2em;
     padding: 0.5em;
@@ -145,6 +166,10 @@ p {
 
 .border-radius {
     border-radius: var(--border-radius);
+}
+
+.light {
+    background-color: var(--light);
 }
 
 
@@ -194,15 +219,14 @@ p {
 /* --------------- Navbar ------------------- */
 
 .navbar {
-    background: var(--dark);
-    color: var(--light);
+    background: var(--light);
+    color: var(--accent-purple);
     padding: 1em 0;
 }
 
 .brand {
     font-size: 2rem;
     font-family: var(--heading-font);
-    color: var(--light);
 }
 
 .navbar .container {
@@ -251,7 +275,6 @@ p {
 }
 
 .navbar a {
-    background-color: var(--dark);
     font-size: 1.4em;
 }
 
@@ -388,7 +411,7 @@ footer {
 }
 
 footer a {
-    color: var(--main);
+    color: var(--accent-purple);
 }
 
 footer .container {

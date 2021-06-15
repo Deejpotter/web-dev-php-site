@@ -72,37 +72,55 @@ if (isset($_POST['add'])) {
 
 <?php
 // Add the head
-$title = "Add | Recipe thing";
+$title = "Add | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 
 <main>
     <?php require_once $file_level . "includes/flash.php"; ?>
 
-    <div class="container-col">
-        <h1>Add recipe</h1>
+    <!-- Hero section -->
+    <section class="hero shadow">
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
+        <div class="container-center">
+            <h1>Add a recipe</h1>
+            <h2>Fill in the form below to create a new recipe.</h2>
+        </div>
+    </section>
 
-        <form enctype="multipart/form-data" method="post">
-            <label for="image">Image</label>
-            <input type="file" name="image" id="image" /><br />
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" /><br />
-            <label for="alt">Alt Text</label>
-            <input type="text" name="alt" id="alt" /><br />
-            <label for="subtitle">Subtitle</label>
-            <input type="text" name="subtitle" id="subtitle" /><br />
-            <label for="ingredients">Ingredients</label>
-            <textarea name="ingredients" id="ingredients"></textarea><br />
-            <label for="method">Method</label>
-            <textarea name="method" id="method"></textarea><br />
-            <input type="submit" onclick="return validateRecipe();" name="add" value="Submit" />
-            <input type="submit" name="cancel" value="Cancel" />
-        </form>
+    <!-- About section -->
+    <div class="container-sidebar light shadow border-radius">
+        <article class="about-article">
+            <div class="container-col">
+                <form enctype="multipart/form-data" method="post">
+                    <label for="image">Image</label>
+                    <input type="file" name="image" id="image" /><br />
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" /><br />
+                    <label for="alt">Alt Text</label>
+                    <input type="text" name="alt" id="alt" /><br />
+                    <label for="subtitle">Subtitle</label>
+                    <input type="text" name="subtitle" id="subtitle" /><br />
+                    <label for="ingredients">Ingredients</label>
+                    <textarea name="ingredients" id="ingredients"></textarea><br />
+                    <label for="method">Method</label>
+                    <textarea name="method" id="method"></textarea><br />
+                    <input type="submit" onclick="return validateRecipe();" name="add" value="Submit" />
+                    <input type="submit" name="cancel" value="Cancel" />
+                </form>
 
-        <p id="js_validation_message"></p>
+                <p id="js_validation_message"></p>
 
-        <script src="js/validate.js"></script>
+                <script src="js/validate.js"></script>
+            </div>
+        </article>
+        <aside class="sidebar">
+            <p>Fill in the every part of the form before pressing the add button.</p>
+            <p>When entering the ingredients and method, please enter each ingredient or step on a new line so it
+                displays properly.</p>
+        </aside>
     </div>
+
 </main>
 
 <?php

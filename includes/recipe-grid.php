@@ -29,7 +29,7 @@
                 $method = sanitize_input($row["method"]);
 
                 echo ('<div class="card shadow">');
-                echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="An empty table with a knife." />');
+                echo ('<img src="data:image/jpeg;base64,' . base64_encode($row["image"]) . '" alt="' . $alt . '" />');
                 echo ('<a href="' . $file_level . 'recipes/view.php?recipe_id=' . $row['recipe_id'] . '">View</a>');
                 echo ('<a href="' . $file_level . 'recipes/edit.php?recipe_id=' . $row['recipe_id'] . '">Edit</a>');
                 echo ('<a href="' . $file_level . 'recipes/delete.php?recipe_id=' . $row['recipe_id'] . '">Delete</a>');

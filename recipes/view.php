@@ -40,7 +40,7 @@ if (!empty($sth->execute())) {
         $method = explode(PHP_EOL, sanitize_input($row["method"]));
 
         // Add the head
-        $title = "$name | Recipe thing";
+        $title = "$name | Your Recipes";
         require_once $file_level . "includes/head.php";
 ?>
 

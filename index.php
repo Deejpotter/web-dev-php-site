@@ -13,7 +13,7 @@ require_once $file_level . "includes/util.php";
 
 <?php
 // Add the head
-$title = "Home | Recipe thing";
+$title = "Home | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 
@@ -23,7 +23,7 @@ require_once $file_level . "includes/head.php";
     <section class="hero shadow">
         <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
         <div class="container-center">
-            <h1>Simple Recipes</h1>
+            <h1>Your Recipes</h1>
             <h2>Create and view your recipes in one place.</h2>
             <?php
             if (!isset($_SESSION['email'])) {

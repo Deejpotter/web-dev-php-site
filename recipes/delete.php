@@ -58,7 +58,7 @@ if (isset($_SESSION['email'])) {
             }
 
             $recipe_id = sanitize_input($row['recipe_id']);
-            $name = sanitize_input($row['type']);
+            $name = sanitize_input($row['name']);
             $alt = sanitize_input($row['alt']);
             $subtitle = sanitize_input($row['subtitle']);
         }
@@ -75,23 +75,48 @@ if (isset($_SESSION['email'])) {
 
 <?php
 // Add the head
-$title = "Delete | Recipe thing";
+$title = "Delete | Your Recipes";
 require_once $file_level . "includes/head.php";
 ?>
 
+<main>
 
-<h1>Delete Recipe</h1>
+    <!-- Hero section -->
+    <section class="hero shadow">
+        <img src="<?php echo $file_level; ?>images/main-hero.jpg" alt="A guinea pig." />
+        <div class="container-center">
+            <h1>Delete a recipe</h1>
+            <h2>Press the delete button below to delete your recipe.</h2>
+        </div>
+    </section>
 
-<img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
-<p>Type: <?php echo $name ?></p>
-<p>alt: <?php echo $alt ?></p>
-<p>Date of Birth: <?php echo $subtitle ?></p>
+    <!-- About section -->
+    <div class="container-sidebar light shadow border-radius">
+        <article class="about-article">
+            <div class="container-col">
+                <img src="data:image/jpeg;base64, <?php echo base64_encode($row['image']) ?>" alt="<?php echo $name . ' ' . $alt; ?>" width="100" /><br />
+                <p>Type: <?php echo $name ?></p>
+                <p>alt: <?php echo $alt ?></p>
+                <p>Date of Birth: <?php echo $subtitle ?></p>
 
-<form method="post">
-    <input type="hidden" name="recipe_id" value="<?php echo $recipe_id; ?>" />
-    <input type="submit" name="delete" value="Delete" />
-    <input type="submit" name="cancel" value="Cancel" />
-</form>
+                <form method="post">
+                    <input type="hidden" name="recipe_id" value="<?php echo $recipe_id; ?>" />
+                    <input type="submit" name="delete" value="Delete" />
+                    <input type="submit" name="cancel" value="Cancel" />
+                </form>
+
+                <p id="js_validation_message"></p>
+
+                <script src="js/validate.js"></script>
+            </div>
+        </article>
+        <aside class="sidebar">
+            <p>Make sure you are looking at the right recipe before pressing the delete button.</p>
+            <p>There's no way to get this back if you make a mistake.</p>
+        </aside>
+    </div>
+
+</main>
 
 <?php
 // Add the footer

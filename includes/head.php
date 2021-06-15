@@ -17,7 +17,7 @@
         <div class="navbar shadow">
             <div class="container">
                 <div class="brand">
-                    <a href="<?php echo $file_level ?>index.php">Simple Recipes</a>
+                    <a href="<?php echo $file_level ?>index.php">Your Recipes</a>
                 </div>
                 <nav>
                     <label for="show-menu">Show Menu</label>
